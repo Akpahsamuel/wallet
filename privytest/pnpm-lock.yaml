@@ -12,8 +12,8 @@ importers:
         specifier: 0.16.3
         version: 0.16.3(@tanstack/react-query@5.76.1(react@18.3.1))(@types/react-dom@18.3.7(@types/react@18.3.21))(@types/react@18.3.21)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)(typescript@5.8.3)
       '@mysten/sui':
-        specifier: 1.26.0
-        version: 1.26.0(typescript@5.8.3)
+        specifier: 1.29.1
+        version: 1.29.1(typescript@5.8.3)
       '@radix-ui/colors':
         specifier: ^3.0.0
         version: 3.0.0
@@ -345,9 +345,6 @@ packages:
     resolution: {integrity: sha512-rmOWVRUbUJD7iSvJugjUbFZshTAuJ48MXoZ80Osx1GM0K/H1w7rSEvmw8m6vdWxNASgtaHIhAgre4H/E9GJiYQ==}
     engines: {node: '>=18'}
 
-  '@mysten/bcs@1.5.0':
-    resolution: {integrity: sha512-v39dm5oNfKYMAf2CVI+L0OaJiG9RVXsjqPM4BwTKcHNCZOvr35IIewGtXtWXsI67SQU2TRq8lhQzeibdiC/CNg==}
-
   '@mysten/bcs@1.6.1':
     resolution: {integrity: sha512-pywsl2+jxbib5CbteAjMpmJpnj1pcUco2ff+lXCK3hfppPbkyWEMbZDQn1jNngV6ADQ3IFIvPs0FaS7fKWPOLA==}
 
@@ -359,10 +356,6 @@ packages:
 
   '@mysten/slush-wallet@0.1.3':
     resolution: {integrity: sha512-oPjDV7z93ScVqnoATMJ2nON3KmKj1r8ofIsIB+rGEeWfbwWWeuyBLe1KN4rGBKipop9axhmM3ZHygSwMNcA0Dg==}
-
-  '@mysten/sui@1.26.0':
-    resolution: {integrity: sha512-mSoWTgT7Vta+Oyex0yInrVfUXbeEZ0dH4Lvjwm24PDsKCvcLkt4sCooqiC6Z40jCne5uX1G0P/3OMmI0EN5w5A==}
-    engines: {node: '>=18'}
 
   '@mysten/sui@1.29.1':
     resolution: {integrity: sha512-VkmaLIgXpuRMBFe47SC0swHemDx9qfhGQyxybFr2r3dTnh42gTFi0BlyW3aLr0Y2GxWbNlLphB5C3ELR7aqacw==}
@@ -2535,10 +2528,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mysten/bcs@1.5.0':
-    dependencies:
-      '@scure/base': 1.2.5
-
   '@mysten/bcs@1.6.1':
     dependencies:
       '@mysten/utils': 0.0.0
@@ -2577,24 +2566,6 @@ snapshots:
       '@mysten/wallet-standard': 0.15.0(typescript@5.8.3)
       '@mysten/window-wallet-core': 0.0.2
       mitt: 3.0.1
-      valibot: 0.36.0
-    transitivePeerDependencies:
-      - '@gql.tada/svelte-support'
-      - '@gql.tada/vue-support'
-      - typescript
-
-  '@mysten/sui@1.26.0(typescript@5.8.3)':
-    dependencies:
-      '@graphql-typed-document-node/core': 3.2.0(graphql@16.11.0)
-      '@mysten/bcs': 1.5.0
-      '@noble/curves': 1.9.1
-      '@noble/hashes': 1.8.0
-      '@scure/base': 1.2.5
-      '@scure/bip32': 1.7.0
-      '@scure/bip39': 1.6.0
-      gql.tada: 1.8.10(graphql@16.11.0)(typescript@5.8.3)
-      graphql: 16.11.0
-      poseidon-lite: 0.2.1
       valibot: 0.36.0
     transitivePeerDependencies:
       - '@gql.tada/svelte-support'

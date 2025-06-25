@@ -43,7 +43,6 @@ export function createSponsorKeypair(): Ed25519Keypair {
  * This is for demonstration purposes only
  */
 export async function fundSponsorAccount(
-  suiClient: SuiClient,
   sponsorAddress: string,
   network: 'testnet' | 'devnet' = 'testnet'
 ): Promise<void> {

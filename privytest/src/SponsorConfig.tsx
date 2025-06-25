@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Flex, Text, Badge, Dialog, IconButton, Code, Box } from '@radix-ui/themes';
 import { Ed25519Keypair } from '@mysten/sui/keypairs/ed25519';
 import { useSuiClient } from '@mysten/dapp-kit';
@@ -49,7 +49,7 @@ export function SponsorConfig({ onSponsorChange, currentSponsor }: SponsorConfig
         );
         
         if (shouldFund) {
-          await fundSponsorAccount(suiClient, sponsorAddress, 'testnet');
+          await fundSponsorAccount(sponsorAddress, 'testnet');
           // Recheck balance after funding
           const newBalance = await checkSponsorBalance(suiClient, sponsorAddress);
           setBalanceInfo(newBalance);
@@ -98,7 +98,7 @@ export function SponsorConfig({ onSponsorChange, currentSponsor }: SponsorConfig
       setIsLoading(true);
       try {
         const sponsorAddress = currentSponsor.getPublicKey().toSuiAddress();
-        await fundSponsorAccount(suiClient, sponsorAddress, 'testnet');
+        await fundSponsorAccount(sponsorAddress, 'testnet');
         // Refresh balance after funding
         const balance = await checkSponsorBalance(suiClient, sponsorAddress);
         setBalanceInfo(balance);

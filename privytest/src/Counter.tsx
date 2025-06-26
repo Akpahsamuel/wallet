@@ -58,14 +58,12 @@ export function Counter({ id }: { id: string }) {
         },
         {
           onSuccess: (result) => {
-            console.log('Gasless transaction successful:', result);
             suiClient.waitForTransaction({ digest: result.digest }).then(async () => {
               await refetch();
               setWaitingForTxn("");
             });
           },
           onError: (error) => {
-            console.error('Gasless transaction failed:', error);
             setWaitingForTxn("");
             alert(`Gasless transaction failed: ${error.message}`);
           },
@@ -85,7 +83,6 @@ export function Counter({ id }: { id: string }) {
             });
           },
           onError: (error) => {
-            console.error('Regular transaction failed:', error);
             setWaitingForTxn("");
             alert(`Transaction failed: ${error.message}`);
           },

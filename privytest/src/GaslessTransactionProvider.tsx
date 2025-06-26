@@ -92,7 +92,6 @@ export function GaslessTransactionProvider({
 
       return result.digest;
     } catch (error) {
-      console.error('Gasless transaction failed:', error);
       throw error;
     }
   };

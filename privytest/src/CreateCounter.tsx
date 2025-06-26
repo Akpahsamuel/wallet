@@ -40,8 +40,6 @@ export function CreateCounter({
         },
         {
           onSuccess: async (result) => {
-            console.log('Gasless counter creation successful:', result);
-            
             // Wait for transaction and get effects
             const { effects } = await suiClient.waitForTransaction({
               digest: result.digest,
@@ -53,12 +51,9 @@ export function CreateCounter({
             const createdObjectId = effects?.created?.[0]?.reference?.objectId;
             if (createdObjectId) {
               onCreated(createdObjectId);
-            } else {
-              console.error('Failed to get created object ID from transaction effects');
             }
           },
           onError: (error) => {
-            console.error('Gasless counter creation failed:', error);
             alert(`Gasless transaction failed: ${error.message}`);
           },
         }
@@ -70,8 +65,6 @@ export function CreateCounter({
         },
         {
           onSuccess: async (result) => {
-            console.log('Regular counter creation successful:', result);
-            
             const { effects } = await suiClient.waitForTransaction({
               digest: result.digest,
               options: {
@@ -82,12 +75,9 @@ export function CreateCounter({
             const createdObjectId = effects?.created?.[0]?.reference?.objectId;
             if (createdObjectId) {
               onCreated(createdObjectId);
-            } else {
-              console.error('Failed to get created object ID from transaction effects');
             }
           },
           onError: (error) => {
-            console.error('Regular counter creation failed:', error);
             alert(`Transaction failed: ${error.message}`);
           },
         }

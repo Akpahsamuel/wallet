@@ -125,8 +125,8 @@ export function useSmartSignAndExecuteTransaction() {
             events: result.events,
           };
         } catch (error) {
-          console.warn('Gasless transaction failed, falling back to regular transaction:', error);
-          // Fall through to regular transaction
+          // If fallback also fails, throw the original gasless error
+          throw error;
         }
       }
 

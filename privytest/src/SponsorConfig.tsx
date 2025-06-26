@@ -61,7 +61,6 @@ export function SponsorConfig({ onSponsorChange, currentSponsor }: SponsorConfig
       
       alert(`Sponsor set successfully!\nAddress: ${sponsorAddress}\nBalance: ${balance.totalBalance.toString()} MIST`);
     } catch (error) {
-      console.error('Failed to set sponsor:', error);
       alert(`Failed to set sponsor: ${error instanceof Error ? error.message : 'Unknown error'}`);
     } finally {
       setIsLoading(false);
@@ -86,7 +85,7 @@ export function SponsorConfig({ onSponsorChange, currentSponsor }: SponsorConfig
         const balance = await checkSponsorBalance(suiClient, sponsorAddress);
         setBalanceInfo(balance);
       } catch (error) {
-        console.error('Failed to refresh balance:', error);
+        // Failed to refresh balance, will show unknown status
       } finally {
         setIsLoading(false);
       }
@@ -104,7 +103,6 @@ export function SponsorConfig({ onSponsorChange, currentSponsor }: SponsorConfig
         setBalanceInfo(balance);
         alert('Funding request sent! Balance updated.');
       } catch (error) {
-        console.error('Failed to fund sponsor:', error);
         alert(`Failed to fund sponsor: ${error instanceof Error ? error.message : 'Unknown error'}`);
       } finally {
         setIsLoading(false);

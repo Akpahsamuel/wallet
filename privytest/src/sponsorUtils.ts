@@ -10,27 +10,23 @@ export function createSponsorKeypair(): Ed25519Keypair {
   // Try to get credentials from environment variables
   const privateKey = import.meta.env.VITE_SPONSOR_PRIVATE_KEY;
   const mnemonic = import.meta.env.VITE_SPONSOR_MNEMONIC;
-  
+
   if (privateKey) {
-    console.log('Using sponsor private key from environment variables');
     return Ed25519Keypair.fromSecretKey(privateKey);
   }
-  
+
   if (mnemonic) {
-    console.log('Using sponsor mnemonic from environment variables');
     return Ed25519Keypair.deriveKeypair(mnemonic);
   }
-  
+
   // Fallback: Try to get from localStorage (for demo persistence)
   const storedPrivateKey = localStorage.getItem('demo_sponsor_private_key');
   
   if (storedPrivateKey) {
-    console.log('Using stored demo sponsor account');
     return Ed25519Keypair.fromSecretKey(storedPrivateKey);
   }
-  
+
   // Last resort: Generate a new keypair for demo purposes
-  console.log('Creating new demo sponsor account (consider setting VITE_SPONSOR_PRIVATE_KEY or VITE_SPONSOR_MNEMONIC in .env)');
   const sponsorKeypair = new Ed25519Keypair();
   const secretKeyString = sponsorKeypair.getSecretKey();
   localStorage.setItem('demo_sponsor_private_key', secretKeyString);
@@ -52,9 +48,7 @@ export async function fundSponsorAccount(
       host: faucetHost,
       recipient: sponsorAddress,
     });
-    console.log(`Requested test SUI for sponsor account: ${sponsorAddress}`);
   } catch (error) {
-    console.error('Failed to fund sponsor account:', error);
     throw error;
   }
 }
@@ -81,7 +75,6 @@ export async function checkSponsorBalance(
       coinCount: coins.length,
     };
   } catch (error) {
-    console.error('Failed to check sponsor balance:', error);
     return {
       hasBalance: false,
       totalBalance: 0n,
@@ -119,7 +112,6 @@ export function getSponsorSource(): 'env_private_key' | 'env_mnemonic' | 'localS
  */
 export function clearDemoSponsor(): void {
   localStorage.removeItem('demo_sponsor_private_key');
-  console.log('Cleared demo sponsor from localStorage');
 }
 
 // Legacy function for backward compatibility
